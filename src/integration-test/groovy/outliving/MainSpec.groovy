@@ -83,7 +83,8 @@ class MainSpec extends GebSpec {
         title == "By surviving to midnight, you've managed to outlive these people"
 
         and:
-        $('ul li')*.text() == ["dead person 1", "dead person 2"]
+        $('ul li span.name')*.text() == ["dead person 1", "dead person 2"]
+        $('ul li span.description')*.text() == ["description 1", "description 2"]
 
     }
 
