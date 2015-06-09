@@ -1,5 +1,7 @@
 package com.stupidplebs.outliving
 
+import grails.converters.JSON
+
 class MainController {
 
     def index() { }
@@ -17,8 +19,14 @@ class MainController {
 			(params.month as Integer)-1, 
 			params.day as Integer)
 
-		[deadPeople: DeadPerson.findAllByDaysAlive(today - birthDate + 1)]
+		def deadPeople = DeadPerson.findAllByDaysAlive(today - birthDate + 1)
+
+		withFormat {
+			html { [deadPeople: deadPeople] }
+			json { render ([deadPeople: deadPeople] as JSON) }
+		}
 
     }
+
 
 }
