@@ -8,5 +8,7 @@ class DeadPerson {
 	Integer daysAlive 
 
     static constraints = {
+    	description(nullable: true)
+    	daysAlive(min: 0, max: 365*125)
     }
 }
